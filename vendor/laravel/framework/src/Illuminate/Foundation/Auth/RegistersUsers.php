@@ -35,7 +35,7 @@ trait RegistersUsers
         $this->guard()->login($user);
 
         return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
+                        ?: redirect($this->redirectPath())->with(['status' => $this->status]);
     }
 
     /**
@@ -59,4 +59,7 @@ trait RegistersUsers
     {
         //
     }
+	public function result(){
+		return view('auth.result');
+	}
 }
