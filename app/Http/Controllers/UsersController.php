@@ -107,8 +107,9 @@ public function __construct()
         //
         $obj = Obj::find($id);
         $obj->name = $request->name;
-                $obj->email = $request->email;
-        $obj->password = bcrypt($request->password);
+        $obj->email = $request->email;
+		if(!empty(trim($request->password)))
+			$obj->password = bcrypt($request->password);
         $obj->role = $request->role;
         $obj->save();
 

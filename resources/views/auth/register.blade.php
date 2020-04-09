@@ -10,6 +10,19 @@
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
+                        <div class="form-group{{ $errors->has('id_user') ? ' has-error' : '' }}">
+                            <label for="id_user" class="col-md-4 control-label">Nomor ID</label>
+
+                            <div class="col-md-6">
+                                <input id="id_user" type="number" autocomplete="off" class="form-control" name="id_user" value="{{ old('id_user') }}" required autofocus>
+
+                                @if ($errors->has('id_user'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('id_user') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
                             <label for="name" class="col-md-4 control-label">Name</label>
