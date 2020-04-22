@@ -5,7 +5,7 @@ namespace Illuminate\Foundation\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-
+use App\User;
 trait AuthenticatesUsers
 {
     use RedirectsUsers, ThrottlesLogins;
@@ -165,5 +165,52 @@ trait AuthenticatesUsers
     protected function guard()
     {
         return Auth::guard();
+    }
+	
+	//----------------------- API -------------------------------//
+	protected function api_guard()
+    {
+        return Auth::guard('api');
+    }
+	
+	protected function respondWithToken($token, $user)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => $this->api_guard()->factory()->getTTL() * 60,
+			'user' => $user
+        ]);
+    }
+	
+	function api_login(Request $request){
+		if(User::where('email', $request->email)->get()->count() < 1)
+			return response()->json(['message' => 'Email tidak ditemukan'],404);
+		if($token =  $this->api_guard()->attempt(
+            $this->credentials($request)
+        )){
+			
+			$user = array(
+				"id" => $this->api_guard()->user()->id,
+				"id_user" => $this->api_guard()->user()->id_user,
+				"name" => $this->api_guard()->user()->name,
+				"status" => $this->api_guard()->user()->status,
+				"role" => 2,
+				"email" => $this->api_guard()->user()->email);
+			return $this->respondWithToken($token, $user);
+		}
+		return response()->json(['message' => 'Password salah'],401);
+	}
+	
+	public function api_logout()
+    {
+        $this->api_guard()->logout();
+		return response()->json(['message' => 'Anda Berhasil Logout']);
+        
+    }
+	
+	public function refresh()
+    {
+        return response()->json(["access_token" =>$this->api_guard()->refresh()]);
     }
 }

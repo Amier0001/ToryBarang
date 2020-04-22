@@ -16,8 +16,7 @@ class UserSeeder extends Seeder
         		'id_user'=>'1705015',
         		'name'=>'admin',
         		'email'=>'admin@admin.com',
-        		'password'=>bcrypt('admin'),
-        		'role'=>1
+        		'password'=>bcrypt('admin')
         	]);
     }
 }

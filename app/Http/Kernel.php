@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'admin' => \App\Http\Middleware\isAdmin::class,
         'petugas' => \App\Http\Middleware\isPetugas::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+		'jwt.verify' => \App\Http\Middleware\JwtMiddleware::class,
     ];
 }

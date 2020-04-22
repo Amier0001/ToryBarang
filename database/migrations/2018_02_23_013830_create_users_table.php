@@ -19,7 +19,8 @@ class CreateUsersTable extends Migration {
 			$table->string('name');
 			$table->string('email')->unique();
 			$table->string('password');
-			$table->integer('role');
+			$table->char('foto', 50)->nullable();
+			$table->enum('status', ['aktif','belum aktif'])->default('belum aktif');
 			$table->string('remember_token', 100)->nullable();
 			$table->timestamps();
 		});
