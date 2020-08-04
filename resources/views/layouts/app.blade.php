@@ -39,13 +39,17 @@
                     <ul class="nav navbar-nav">
                         &nbsp;
                     </ul>
-
-                @if (Auth::user())
+				@if (Auth::check())
+					<ul class="nav navbar-nav navbar-left">
+                    <li><a href="">Home</a></li>
+                    </ul>
+				@endif	
+                @if (Auth::guard("admin")->check())
                     {{-- expr --}}
 
                     <ul class="nav navbar-nav navbar-left">
                     <li><a href="{{ url('/supplier') }}">Tambah Admin</a></li>
-                    @if (Auth::user()->role==1)
+                    @if (Auth::guard("admin")->user()->role==1)
                     <li><a href="{{ url('/users') }}">User</a></li>
                     @endif
                     <li><a href="{{ url('/kategori') }}">Kategori</a></li>
@@ -55,7 +59,7 @@
                     <li><a href="{{ url('/pinjam-barang') }}">Pinjam Barang</a></li>
                     <li><a href="{{ url('/stok-barang') }}">Stok Barang</a></li>
 
-                    @if (Auth::user()->role==1)
+                    @if (Auth::guard("admin")->user()->role==1)
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -76,11 +80,8 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li> <li><a href="{{ route('register') }}">Register</a></li>
-
-                        @else
-                            <li class="dropdown">
+						@if (Auth::check())
+							<li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -99,7 +100,31 @@
                                     </li>
                                 </ul>
                             </li>
-                        @endguest
+						@elseif (Auth::guard("admin")->check())
+							<li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                    {{ Auth::guard("admin")->user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ route('admlgt') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('admlgt') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+						@else
+                        @guest
+                            <li><a href="{{ route('login') }}">Login</a></li> <li><a href="{{ route('register') }}">Register</a></li>
+						@endguest
+						@endif
                     </ul>
                 </div>
             </div>

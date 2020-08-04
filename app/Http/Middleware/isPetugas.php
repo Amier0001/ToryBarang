@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class isPetugas
 {
@@ -15,9 +16,9 @@ class isPetugas
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->role == 2 ) {
-            echo "string";
+        if (Auth::check()) {
+            return $next($request);
         }
-                return $next($request);
+        return redirect('/login');        
     }
 }

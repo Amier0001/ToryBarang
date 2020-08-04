@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use JWTAuth;
+use Auth;
 
 class JwtMiddleware
 {
@@ -16,15 +16,6 @@ class JwtMiddleware
      */
     public function handle($request, Closure $next)
     {
-		try {
-
-			if (! $user = JWTAuth::parseToken()->authenticate()) {
-				return response()->json(['message'=>'user_not_found'], 404);
-			}
-
-		} catch(\Exception $e){
-			return response()->json(["message" => $e->getMessage()], 404);
-		}
         return $next($request);
     }
 }

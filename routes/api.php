@@ -21,5 +21,9 @@ Route::post('/register', 'Auth\RegisterController@api_register');
 Route::post('/login', 'Auth\LoginController@api_login');
 Route::post('/refresh', 'Auth\LoginController@refresh');
 Route::post('/logout', 'Auth\LoginController@api_logout');
-Route::post('/index', 'api\AuthController@index');
+Route::post('/index/{id}', 'api\AuthController@index');
 Route::post('/user/update/{id}', 'api\AuthController@update');
+
+Route::post('/loginadm', 'Auth\LoginAdminOPController@api_login');
+Route::post('/logoutadm', 'Auth\LoginAdminOPController@api_logout');
+Route::post('/user/updateadm/{id}', 'api\AuthController@updateadmin');

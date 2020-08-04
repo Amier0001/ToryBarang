@@ -13,8 +13,13 @@
 
 
 Auth::routes();
+// Authentication Routes...
+Route::get('admin', 'HomeController@index');
+Route::get('admin_login', 'Auth\LoginAdminOPController@showLoginForm');
+Route::post('proc_admin', 'Auth\LoginAdminOPController@login')->name('login-admin');
+Route::post('logout_admin', 'Auth\LoginAdminOPController@logout')->name('admlgt');
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomePagePeminjam@index')->name('home');
 
 Route::get('/users/cari','UsersController@search');
 Route::resource('/users','UsersController');
