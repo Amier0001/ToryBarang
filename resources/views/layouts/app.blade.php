@@ -48,7 +48,7 @@
                     {{-- expr --}}
 
                     <ul class="nav navbar-nav navbar-left">
-                    <li><a href="{{ url('/supplier') }}">Tambah Admin</a></li>
+                    <!--<li><a href="{{ url('/supplier') }}">Tambah Admin</a></li>-->
                     @if (Auth::guard("admin")->user()->role==1)
                     <li><a href="{{ url('/users') }}">User</a></li>
                     @endif

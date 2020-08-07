@@ -23,7 +23,7 @@ class BarangController extends Controller
 public function __construct()
 {
     
-    $this->middleware('auth');
+    //$this->middleware('admin');
 
 }
     public function index()
@@ -101,11 +101,11 @@ public function __construct()
 
 
 
-            $stok = new Stok;
-            $stok->kode_barang = $request->kode;
-            $stok->jml_barang_masuk= $request->jml_barang;
-            $stok->total = $request->jml_barang;
-            $stok->save();
+            //$stok = new Stok;
+            //$stok->kode_barang = $request->kode;
+            //$stok->jml_barang_masuk= $request->jml_barang;
+            //$stok->total = $request->jml_barang;
+            //$stok->save();
 
 
 
@@ -223,6 +223,12 @@ public function __construct()
     public function stok(){
         return view('pro');
     }
-
+	public function get_barang(){
+		return response()->json([
+                      'error'   => 0,
+                      'barang' => Obj::all(),
+                  ], 200);
+		
+	}
 
 }

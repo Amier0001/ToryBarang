@@ -22,7 +22,7 @@
                 <th>#</th>
                 	<th>Name</th>
                 	<th>Email</th>
-                	<th>Level</th>
+                	<th>Status</th>
                 	<th>Aksi</th>
                 </thead>
                 	<tbody>
@@ -38,10 +38,10 @@
                 			<td>{{$no++}}</td>
                 			<td>{{$d->name}}</td>
                 			<td>{{$d->email}}</td>
-                			<td>{!!$d->role ==1 ? '<label class="label label-success">Admin</label>' :''!!}
-{!!$d->role ==2 ? '<label class="label label-primary">Petugas</label>' :''!!}
+                			<td>{!!$d->status =="aktif" ? '<label class="label label-success">Aktif</label>' :'<label class="label label-primary">Belum Aktif</label>'!!}
                 			</td>
                 			<td>
+							{!!$d->status =="aktif" ? '<button data-toggle="modal" data-target="#confirmModal" data-action="" class="btn btn-danger delete-btn">Non-AKtifkan</button>' :'<button data-toggle="modal" data-target="#confirmModal" data-action="" class="btn btn-primary delete-btn">Aktifkan</button>'!!}
                 			<a href="{{$page.'/'.$d->id.'/edit'}}" class="btn btn-success">Edit</a>
                 			  <button data-toggle="modal" data-target="#confirmModal" data-action="{{url($page.'/'.$d->id)}}" class="btn btn-danger delete-btn">Hapus</button>
                 			</td>

@@ -27,3 +27,5 @@ Route::post('/user/update/{id}', 'api\AuthController@update');
 Route::post('/loginadm', 'Auth\LoginAdminOPController@api_login');
 Route::post('/logoutadm', 'Auth\LoginAdminOPController@api_logout');
 Route::post('/user/updateadm/{id}', 'api\AuthController@updateadmin');
+
+Route::get("/barang", "BarangController@get_barang");
