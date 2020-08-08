@@ -5,59 +5,53 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Stok Barang</div>
+                <div class="panel-heading">Data Barang</div>
 
-                <div class="panel-body">	
+                <div class="panel-body">    
 
+
+                <a class="btn btn-primary" href="{{$page}}/create">Tambah Data</a>
+
+                <div class="pull-right">
+                    <form action="{{url($page.'/cari')}}" method="get">
+                        <input type="text" name="q" class="form-control" placeholder="Cari Data">
+                    </form>
+                </div>
                 <table class="table table-striped">
                 <thead>
                 <th>#</th>
-                <th>Nama</th>
-                	<th>Jumlah Barang Masuk</th>
-                    <th>Jumlah Barang Keluar</th>
-                    <th>Total</th>
+                    <th>Nama</th>
+                    <th>Jumlah Barang</th>
+                    <th>Aksi</th>
                 </thead>
-                	<tbody class="data">
-                    
-                   
-                	</tbody>
+                    <tbody>
+                    @if (count($data) == 0)
+                        {{-- expr --}}
+                        <tr>
+                            <td colspan="6"><center>Data Tidak Ada</center></td>
+                        </tr>
+                    @endif
+                    @foreach ($data as $d)
+                        <tr>
+                            <td>{{$d->kode}}</td>
+                            <td>{{$d->nama}}</td>
+                            <td>{{$d->jml_barang}}</td>
+
+                            <td>
+
+                            <a href="{{$page.'/'.$d->kode}}" class="btn btn-info">Detail</a>
+                            <a href="{{$page.'/'.$d->kode.'/edit'}}" class="btn btn-success">Edit</a>
+                                <button data-toggle="modal" data-target="#confirmModal" data-action="{{url($page.'/'.$d->kode)}}" class="btn btn-danger delete-btn">Hapus</button>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
                 </table>
-	
-		
+    <center>{{$data->links()}}</center>
+        
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-@push('script')
-<script>
-    $(document).ready(function(){
-
-
-            setInterval(function(){
- $.ajax({
-            url: "{{ url('/stok-data') }}",
-            method: "GET",
-            dataType: "JSON",
-            success:function(res){
-                var html = '';
-                for (var i = 0; i < res.length; i++) {
-                html += '<tr>';
-                html += '<td>'+res[i].kode_barang+'</td>';
-                html += '<td>'+res[i].nama+'</td>';
-                html += '<td>'+res[i].jml_barang_masuk+'</td>';
-                html += '<td>'+res[i].jml_barang_keluar+'</td>';
-                html += '<td>'+res[i].total+'</td>';
-                html += '</tr>';
-                }
-                $(".data").html(html);
-            }
-            });
-
-        },2000);
-    });
-</script>
-    {{-- expr --}}
-@endpush
 @endsection

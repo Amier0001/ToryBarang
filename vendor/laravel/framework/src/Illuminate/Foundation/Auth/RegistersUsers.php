@@ -35,7 +35,7 @@ trait RegistersUsers
         $this->guard()->login($user);
 
         return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath())->with(['status' => $this->status]);
+                        ?: redirect($this->redirectPath());
     }
 
     /**
@@ -59,12 +59,4 @@ trait RegistersUsers
     {
         //
     }
-	public function result(){
-		return view('auth.result');
-	}
-	public function api_register(Request $request){
-		event(new Registered($user = $this->create($request->all())));
-		return response()->json(['message'=>'Pendaftaran Berhasil.!\nSilahkan Masuk!']);
-		
-	}
 }

@@ -19,9 +19,11 @@
                 </div>
                 <table class="table table-striped">
                 <thead>
-                <th>#</th>
+                <th>QR Code</th>
                 	<th>Nama</th>
                 	<th>Jumlah Barang</th>
+                    <th>Barang Masuk</th>
+                    <th>Lokasi Barang</th>
                     <th>Aksi</th>
                 </thead>
                 	<tbody>
@@ -36,7 +38,8 @@
                 			<td>{{$d->kode}}</td>
                 			<td>{{$d->nama}}</td>
                             <td>{{$d->jml_barang}}</td>
-
+                            <td>{{$d->created_at}}</td>
+                            <td>{{$d->lokasi}}</td>
                             <td>
 
                             <a href="{{$page.'/'.$d->kode}}" class="btn btn-info">Detail</a>

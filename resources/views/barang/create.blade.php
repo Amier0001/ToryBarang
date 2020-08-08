@@ -29,9 +29,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Lokasi</label>
+                            <label>Lokasi Barang</label>
                             <input type="text" name="lokasi" class="form-control">
                         </div>
+
+                    
+  
+
                         <div class="form-group">
                             <label>Kategori</label>
                             <select class="form-control" name="kategori">
@@ -42,6 +46,7 @@
                                 @endforeach
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label>Jumlah Barang</label>
                             <input type="number" name="jml_barang" class="form-control">

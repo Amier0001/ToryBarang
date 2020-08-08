@@ -7,6 +7,7 @@ use Session;
 use App\Barang;
 use App\BarangSementara;
 use App\Kategori;
+use App\Lokasi;
 use App\MasukBarang;
 use App\PinjamBarang;
 use App\Stok;

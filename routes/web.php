@@ -29,6 +29,8 @@ Route::get('/supplier/cari','SupplierController@search');
 Route::resource('/supplier','SupplierController');
 Route::get('/kategori/cari','KategoriController@search');
 Route::resource('/kategori','KategoriController');
+Route::get('/lokasi/cari','LokasiController@search');
+Route::resource('/lokasi','LokasiController');
 
 Route::get('barang-sementara/delete/{id}','BarangMasukController@remove');
 Route::get('barang-masuk/getBarangSementara','BarangMasukController@getBarangSementara');
