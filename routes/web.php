@@ -31,8 +31,7 @@ Route::get('/kategori/cari','KategoriController@search');
 Route::resource('/kategori','KategoriController');
 Route::get('/lokasi/cari','LokasiController@search');
 Route::resource('/lokasi','LokasiController');
-Route::get('/barangtkj/cari','BarangtkjController@search');
-Route::resource('/barangtkj','BarangtkjController');
+
 
 Route::get('barang-sementara/delete/{id}','BarangMasukController@remove');
 Route::get('barang-masuk/getBarangSementara','BarangMasukController@getBarangSementara');
@@ -41,6 +40,8 @@ Route::get('barang-masuk/getBarang/{param?}','BarangMasukController@fetchBarang'
 Route::get('barang-masuk/cari','BarangMasukController@search');
 Route::post('barang-masuk/saveBarangSementara','BarangMasukController@saveBarangSementara');
 Route::resource('/barang-masuk','BarangMasukController');
+
+
 
 Route::get('barang-keluar/getBarangSementara','BarangKeluarController@getBarangSementara');
 Route::get('barang-keluar/getBarang/{param?}','BarangKeluarController@fetchBarang');
@@ -72,6 +73,14 @@ Route::get('/laporan/barang-keluar','LaporanController@barangKeluar');
 Route::get('/laporan/pinjam-barang/cetak','LaporanController@pinjamBarangCetak');
 Route::get('/laporan/pinjam-barang','LaporanController@pinjamBarang');
 Route::get('/laporan/peminjaman-barang','LaporanController@pinjamBarang');
+
+Route::get('/tambah', function () {
+return view('inputdata');
+});
+//menerapkan aksi terhadap aktivitas yang diinputkan pada halaman input data menuju controller
+Route::post('/tambahdata', 'lokasi@tambah')->name('tambahdata');
+Route::get('lokasi/{id}', 'LokasiController@show');
+
 
 
 

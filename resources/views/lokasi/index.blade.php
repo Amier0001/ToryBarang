@@ -1,56 +1,18 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Lokasi</div>
-
-                <div class="panel-body">	
-
-
-                <a class="btn btn-primary" href="{{$page}}/create">Tambah Data</a>
-
-                <div class="pull-right">
-                    <form action="{{url($page.'/cari')}}" method="get">
-                        <input type="text" name="q" class="form-control" placeholder="Cari Data">
-                    </form>
-                </div>
-                <table class="table table-striped">
-                <thead>
-                <th>#</th>
-                	<th>Nama</th>
-                	<th>Aksi</th>
-                </thead>
-                	<tbody>
-
-                    @if (count($data) == 0)
-                        {{-- expr --}}
-                        <tr>
-                            <td colspan="6"><center>Data Tidak Ada</center></td>
-                        </tr>
-                    @else
-                	@foreach ($data as $d)
-                		<tr>
-                			<td>{{$no++}}</td>
-                			<td>{{$d->lokasi}}</td>
-                            <td>
-                			<a href="{{$page.'/'.$d->id.'/edit'}}" class="btn btn-success">Edit</a>
-
-                                <button data-toggle="modal" data-target="#confirmModal" data-action="{{url($page.'/'.$d->id)}}" class="btn btn-danger delete-btn">Hapus</button>
-
-                			</td>
-                		</tr>
-                	@endforeach
-                    @endif
-                	</tbody>
-                </table>
-	
-    <center>        {{$data->links()}}</center>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Tambah Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+<script src="main.js"></script>
+</head>
+<body>
+<form action="{{ route('tambahdata')}}" method="POST">
+@csrf
+<input type="text" name="nama" id="nama" placeholder="Masukan Nama">
+<input type="submit">
+</form>
+</body>
+</html>

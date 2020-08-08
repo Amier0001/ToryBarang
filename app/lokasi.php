@@ -4,7 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Lokasi extends Model
+class lokasi extends Model
 {
-    //
+    protected $fillable = [
+	'nama_lokasi',
+];
 }
