@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Dashboard Admin</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -14,7 +14,7 @@
                         </div>
                     @endif
 <center>
-                <h4>Selamat Datang di Aplikasi Inventarori Barang TI!</h4>
+                <h4>Selamat Datang di Aplikasi Inventarori Barang SMK PGRI JATIBARANG!</h4>
                 </center>
                 </div>
             </div>
