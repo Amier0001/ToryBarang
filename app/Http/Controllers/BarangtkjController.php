@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Lokasi as Obj;
+use App\Barangtkj as Obj;
 use App\Kategori;
 use Session;
 use App\Stok;
 
 
-class LokasiController extends Controller
+class BarangtkjController extends Controller
 {
-     protected $page = 'lokasi';
+    protected $page = 'barangtkj';
     protected $success = 'Data Berhasil';
     protected $failed = 'Data Gagal';
     protected $insert = 'Disimpan';
@@ -127,7 +127,7 @@ public function __construct()
     {
         //
 
-        $data = Obj::find($lokasi);
+        $data = Obj::find($id);
 
         return view($this->page.'/detail',compact('data'));
     }
@@ -141,7 +141,7 @@ public function __construct()
     public function edit($id)
     {
         //
-        $data= Obj::find($lokasi);
+        $data= Obj::find($id);
         $categories = Kategori::all();
         $page = $this->page;
         return view($this->page.'/edit',compact('data','page','categories'));
@@ -198,7 +198,7 @@ public function __construct()
     public function destroy($id)
     {
         //
-        $obj = Obj::find($lokasi);
+        $obj = Obj::find($id);
         $obj->delete();
         // Session::flash('success',);
         return redirect('/'.$this->page);
@@ -223,12 +223,12 @@ public function __construct()
     public function stok(){
         return view('pro');
     }
-    public function get_lokasi(){
-        return response()->json([
+	public function get_barang(){
+		return response()->json([
                       'error'   => 0,
-                      'lokasi' => Obj::all(),
+                      'barang' => Obj::all(),
                   ], 200);
-        
-    }
+		
+	}
 
 }

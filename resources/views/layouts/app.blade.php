@@ -30,7 +30,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        {{ config('app.name', 'M-BILS') }}
                     </a>
                 </div>
 
@@ -54,7 +54,7 @@
                     @endif
                     <li><a href="{{ url('/kategori') }}">Kategori</a></li>
                     <li><a href="{{ url('/barang') }}">Barang</a></li>
-                    <li><a href="{{ url('/lokasi') }}">Lokasi Barang</a></li>
+                    <li><a href="{{ url('/lokasi/index.php') }}">Lokasi Barang</a></li>
 
                     @if (Auth::guard("admin")->user()->role==1)
                             <li class="dropdown">
@@ -63,7 +63,7 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                   <li><a href="{{ url('/laporan/barang-masuk') }}">TKJ</a></li>
+                                   <li><a href="{{ url('/barangtkj') }}">TKJ</a></li>
                                    <li><a href="{{ url('/laporan/barang-keluar') }}">TSM</a></li>
                                    <li><a href="{{ url('/laporan/peminjaman-barang') }}">TPM</a></li>
                                 </ul>

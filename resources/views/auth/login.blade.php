@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading">Login Users</div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
@@ -47,6 +47,8 @@
                     </form>
                 </div>
             </div>
+            <div class="panel panel-default">
+                <div class="panel-heading text-center"><b>NOTE:</b> Untuk pendaftaran akun hubungi langsung ke admin jurusan, dengan membawa kartu pelajar.</div>
         </div>
     </div>
 </div>

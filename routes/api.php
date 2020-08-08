@@ -29,3 +29,4 @@ Route::post('/logoutadm', 'Auth\LoginAdminOPController@api_logout');
 Route::post('/user/updateadm/{id}', 'api\AuthController@updateadmin');
 
 Route::get("/barang", "BarangController@get_barang");
+Route::get("/barangtkj", "BarangtkjController@get_barangtkj");

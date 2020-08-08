@@ -3,9 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-5 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading">Login Administrator</div>
+                <div class="panel panel-primary class text-center "><h4>Login Administrator</h4></div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login-admin') }}">
                         {{ csrf_field() }}
@@ -42,6 +42,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
+                                <a href="" class="col-md-offset-1"> Lupa password?</a>
                             </div>
                         </div>
                     </form>

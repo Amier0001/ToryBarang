@@ -7,64 +7,65 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Tambah Barang</div>
 
-                <div class="panel-body">	
-                    <form action="/{{$page}}" method="post" enctype="multipart/form-data">
+                <div class="panel-body">    
+              <form action="{{ url($page.'/'.$data->kode) }}" method="post">
                     {{csrf_field()}}
+                    {{method_field('PUT')}}
+
                         <div class="form-group">
                             <label>Kode</label>
-                            <input readonly type="text" name="kode" class="form-control" value="{{$code}}">
+                            <input readonly type="text" name="kode" class="form-control" value="{{$data->kode}}">
                         </div>
                         <div class="form-group">
                             <label>Nama</label>
-                            <input type="text" name="nama" class="form-control">
+                            <input type="text" name="nama" class="form-control" value="{{$data->nama}}">
                         </div>
 
                         <div class="form-group">
                             <label>Spesifikasi</label>
-                                <textarea class="form-control" name="spesifikasi"></textarea>
+                                <textarea class="form-control" name="spesifikasi">{{$data->spesifikasi}}</textarea>
                         </div>
                         <div class="form-group">
-                            <label>Foto (Jika Ada)</label>
+                            <label>Foto</label>
+                            @if ($data->foto !=null)
+                                {{-- expr --}}
+                            <img src="{{ url('uploads/'.$data->foto) }}" class="img img-responsive" style="width: 150px;height: 100px;">
+                            <br>
+                            @endif
     <input type="file" name="foto" class="form-control">
                         </div>
 
                         <div class="form-group">
-                            <label>Lokasi Barang</label>
-                            <input type="text" name="lokasi" class="form-control">
+                            <label>Lokasi</label>
+                            <input type="text" name="lokasi" class="form-control" value="{{$data->lokasi}}"> 
                         </div>
-
-                    
-  
-
                         <div class="form-group">
                             <label>Kategori</label>
                             <select class="form-control" name="kategori">
                                 <option value="">Silahkan Pilih</option>
                                 @foreach ($categories as $c)
                                     {{-- expr --}}
-                                    <option value="{{$c->id}}">{{$c->kategori}}</option>
+                                    <option {{$data->kategori == $c->id ? 'selected' :''}} value="{{$c->id}}">{{$c->kategori}}</option>
                                 @endforeach
                             </select>
                         </div>
-
                         <div class="form-group">
                             <label>Jumlah Barang</label>
-                            <input type="number" name="jml_barang" class="form-control">
+                            <input type="number" name="jml_barang" class="form-control" value="{{$data->jml_barang}}">
                         </div>
                         <div class="form-group">
                             <label>Kondisi</label>
-                            <input type="text" name="kondisi" class="form-control">
+                            <input type="text" name="kondisi" class="form-control" value="{{$data->kondisi}}">
                         </div>
                         <div class="form-group">
                             <label>Sumber Dana</label>
-                            <input type="text" name="sumber_dana" class="form-control">
+                            <input type="text" name="sumber_dana" class="form-control" value="{{$data->sumber_dana}}">
                         </div>
                         <button type="submit" class="btn btn-primary">Simpan</button>
-                        <a href="../barang"><button type="" class="btn btn-danger">Batal</button></a>
                         </div>
 
                     </form>
-	
+    
                 </div>
             </div>
         </div>

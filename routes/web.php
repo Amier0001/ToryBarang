@@ -31,6 +31,8 @@ Route::get('/kategori/cari','KategoriController@search');
 Route::resource('/kategori','KategoriController');
 Route::get('/lokasi/cari','LokasiController@search');
 Route::resource('/lokasi','LokasiController');
+Route::get('/barangtkj/cari','BarangtkjController@search');
+Route::resource('/barangtkj','BarangtkjController');
 
 Route::get('barang-sementara/delete/{id}','BarangMasukController@remove');
 Route::get('barang-masuk/getBarangSementara','BarangMasukController@getBarangSementara');

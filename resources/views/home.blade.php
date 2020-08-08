@@ -14,7 +14,7 @@
                         </div>
                     @endif
 <center>
-                <h4>Selamat Datang di Aplikasi Inventarori Barang SMK PGRI JATIBARANG!</h4>
+                <h4>Selamat Datang <b><i>{{ Auth::guard("admin")->user()->name }}</b></i> di Aplikasi Inventarori Barang SMK PGRI JATIBARANG!</h4>
                 </center>
                 </div>
             </div>
