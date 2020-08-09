@@ -234,11 +234,24 @@ public function __construct()
         return view('pro');
     }
 	public function get_barang(){
+        $barang = Obj::all();
+        $brngs = [];
+        foreach($barang as $b){
+            array_push($brngs, json_encode([
+                "kode"=>$b->kode,
+                "nama"=>$b->nama,
+                "spesifikasi"=>$b->spesifikasi,
+                "lokasi"=>$b->lokasi,
+                "kategori"=>$b->kat->kategori,
+                "jml_barang"=>$b->jml_barang,
+                "kondisi"=>$b->kondisi,
+                "sumber_dana"=>$b->sumber_dana
+            ]));
+        }
 		return response()->json([
                       'error'   => 0,
-                      'barang' => Obj::all(),
+                      'barang' =>  $brngs,
                   ], 200);
-		
 	}
 
 }
