@@ -58,12 +58,12 @@ public function __construct()
         }
 
         $categories = Kategori::all();
-        $page = $this->page;
-        return view($this->page.'/create',compact('page','code','categories'));
+        //$page = $this->page;
+        //return view($this->page.'/create',compact('page','code','categories'));
 
         $locations = Lokasi::all();
         $page = $this->page;
-        return view($this->page.'/create',compact('page','code','locations'));
+        return view($this->page.'/create',compact('page','code','locations','categories'));
     }
 
     /**

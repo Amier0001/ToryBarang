@@ -93,6 +93,7 @@ return view('inputdata');
 });
 //menerapkan aksi terhadap aktivitas yang diinputkan pada halaman input data menuju controller
 Route::get('/lokasi', 'LokasiController@index');
+Route::get('/lokasi/create', 'LokasiController@create');
 
 
 

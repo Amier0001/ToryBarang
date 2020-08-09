@@ -32,6 +32,10 @@
                             <label>Lokasi Barang</label>
                             <select class="form-control" name="lokasi">
                                 <option value="">Silahkan Pilih</option>
+                                @foreach ($locations as $l)
+                                    {{-- expr --}}
+                                    <option value="{{$l->id}}">{{$l->nama}}</option>
+                                @endforeach
                             </select>
                         </div>
 
