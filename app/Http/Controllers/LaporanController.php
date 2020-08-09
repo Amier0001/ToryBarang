@@ -16,8 +16,8 @@ class LaporanController extends Controller
 public function __construct()
 {
 
-    $this->middleware('auth');
-    $this->middleware('admin');
+    //$this->middleware('auth');
+    //$this->middleware('admin');
 
 }
     public function barangMasuk(Request $request){
