@@ -7,6 +7,7 @@ use App\Barang as Obj;
 use App\Kategori;
 use Session;
 use App\Stok;
+use App\Lokasi;
 
 
 class BarangController extends Controller
@@ -59,6 +60,10 @@ public function __construct()
         $categories = Kategori::all();
         $page = $this->page;
         return view($this->page.'/create',compact('page','code','categories'));
+
+        $locations = Lokasi::all();
+        $page = $this->page;
+        return view($this->page.'/create',compact('page','code','locations'));
     }
 
     /**
@@ -145,6 +150,11 @@ public function __construct()
         $categories = Kategori::all();
         $page = $this->page;
         return view($this->page.'/edit',compact('data','page','categories'));
+
+        $data= Obj::find($id);
+        $locations = Lokasi::all();
+        $page = $this->page;
+        return view($this->page.'/edit',compact('data','page','locations'));
     }
 
     /**
