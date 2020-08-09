@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">Detail Pnjam Barang</div>
+                <div class="panel-heading">Detail Pinjam Barang</div>
 
                 <div class="panel-body">	
                 <table class="table table-striped">

@@ -33,6 +33,7 @@ class HomePagePeminjam extends Controller
 	
 	public function proc_pinjam(Request $request)
     {
+		if(isset($request->barang))
 		if(Auth::user()->status == "aktif"){
 			$cek = Pinjam::where("id_user", Auth::user()->id)->where("pinjam", "tidak");
 			$n=0;
@@ -70,6 +71,7 @@ class HomePagePeminjam extends Controller
 		}else{
 			return redirect(url()->previous())->with(["error"=>"Tdak dapat meminjam, Akun anda belum aktif"]);
 		}
+		return redirect(url()->previous())->with(["error"=>"Tdak dapat meminjam, Terjadi kesalahan"]);
     }
 	
 	public function detail_pinjam($id)
@@ -89,7 +91,7 @@ class HomePagePeminjam extends Controller
 		$tp = "error";
 		$send = Pinjam::findOrFail($request->id_pinjaman);
 		$send->pinjam = "ya";
-		$send->update();
+		if($send->update()){$msg = "Berhasil mengirimkan pengajuan pinjaman";$tp = "info";}
 		return redirect("/pinjaman")->with([$tp=>$msg]);
     }
 }

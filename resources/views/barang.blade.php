@@ -33,7 +33,7 @@
                             <td>{{$d->jml_barang}}</td>
                             <td>{{$d->created_at}}</td>
                             <td>{{$d->lokasi}}</td>
-                            <td><input type="checkbox" name="barang[]" value="{{$d->kode}}" required></td>
+                            <td><input type="checkbox" name="barang[]" value="{{$d->kode}}"></td>
                 		</tr>
                 	@endforeach
                 	</tbody>

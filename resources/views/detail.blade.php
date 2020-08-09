@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
-                <div class="panel-heading">Detail Pnjam Barang</div>
+                <div class="panel-heading">Detail Pinjam Barang1</div>
 
                 <div class="panel-body">	
 				ID Pinjaman : {{$id}}
@@ -35,13 +35,15 @@
                 	</tbody>
                 </table>
 				<form action = "{{route('send_pinjam')}}" method="POST">
+				@if(Auth::check())
 				{{csrf_field()}}
 				<input type="hidden" name="id_pinjaman" value="{{$id}}">
 				@if($done == 0)<input class="btn btn-info" type="submit" name="submit" value="Pinjam">
 				<a href="/user/barang" class="btn btn-warning">Tambah Lagi</a>
 				@endif
 				<a href="{{ url()->previous() }}" class="btn btn-default">Kembali</a>
-                </form>
+                @endif
+				</form>
 				</div>
             </div>
         </div>
