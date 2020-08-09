@@ -54,7 +54,7 @@
                     @endif
                     <li><a href="{{ url('/kategori') }}">Kategori</a></li>
                     <li><a href="{{ url('/barang') }}">Barang</a></li>
-                    <li><a href="{{ url('/lokasi') }}">Lokasi Barang</a></li>
+                    <li><a href="{{ url('../lokasi') }}">Lokasi Barang</a></li>
 
                     @if (Auth::guard("admin")->user()->role==1)
 

@@ -27,14 +27,14 @@
                             <label>Foto (Jika Ada)</label>
     <input type="file" name="foto" class="form-control">
                         </div>
-
+                        
                         <div class="form-group">
                             <label>Lokasi Barang</label>
-                            <input type="text" name="lokasi" class="form-control">
+                            <select class="form-control" name="lokasi">
+                                <option value="">Silahkan Pilih</option>
+                            </select>
                         </div>
 
-                    
-  
 
                         <div class="form-group">
                             <label>Kategori</label>

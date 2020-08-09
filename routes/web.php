@@ -78,9 +78,7 @@ Route::get('/tambah', function () {
 return view('inputdata');
 });
 //menerapkan aksi terhadap aktivitas yang diinputkan pada halaman input data menuju controller
-Route::post('/tambahdata', 'lokasi@tambah')->name('tambahdata');
-Route::get('lokasi/{id}', 'LokasiController@show');
-
+Route::get('/lokasi', 'LokasiController@index');
 
 
 

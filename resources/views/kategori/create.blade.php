@@ -8,7 +8,7 @@
                 <div class="panel-heading">Tambah Kategori</div>
 
                 <div class="panel-body">	
-                    <form action="/{{$page}}" method="post">
+                    <form action="../{{$page}}" method="post">
                     {{csrf_field()}}
                         <div class="form-group">
                             <label>Kategori</label>
