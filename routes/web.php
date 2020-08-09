@@ -20,6 +20,12 @@ Route::post('proc_admin', 'Auth\LoginAdminOPController@login')->name('login-admi
 Route::post('logout_admin', 'Auth\LoginAdminOPController@logout')->name('admlgt');
 
 Route::get('/', 'HomePagePeminjam@index')->name('home');
+Route::get('/pinjaman', 'HomePagePeminjam@pinjaman');
+Route::get('/user/barang', 'HomePagePeminjam@barang');
+Route::post('/user/proc_pinjam', 'HomePagePeminjam@proc_pinjam')->name("proc_pinjam");
+Route::get('/user/detail_pinjam/{id}', 'HomePagePeminjam@detail_pinjam');
+Route::get('/user/delete_detail_barang/{ida}/{idb}', 'HomePagePeminjam@delete_detail_barang');
+Route::post('/user/send_pinjam', 'HomePagePeminjam@send_pinjam')->name('send_pinjam');
 
 Route::get('/users/cari','UsersController@search');
 Route::resource('/users','UsersController');
@@ -56,6 +62,10 @@ Route::get('pinjam-barang/getBarangSementara','PinjamBarangController@getBarangS
 Route::get('pinjam-barang/getBarang/{param?}','PinjamBarangController@fetchBarang');
 Route::post('pinjam-barang/saveBarangSementara','PinjamBarangController@saveBarangSementara');
 Route::resource('/pinjam-barang','PinjamBarangController');
+Route::get("/admin/pinjaman/{id}/verify", 'PinjamBarangController@verify');
+Route::get("/admin/pinjaman/{id}/kembali", 'PinjamBarangController@kembali');
+Route::get("/admin/pinjaman/{id}/detail", 'PinjamBarangController@detail_pinjam');
+
 
 Route::get('/stok-barang','BarangController@stok');
 Route::get('/stok-data','BarangController@stokData');
@@ -72,6 +82,9 @@ Route::get('/laporan/barang-keluar','LaporanController@barangKeluar');
 Route::get('/laporan/pinjam-barang/cetak','LaporanController@pinjamBarangCetak');
 Route::get('/laporan/pinjam-barang','LaporanController@pinjamBarang');
 Route::get('/laporan/peminjaman-barang','LaporanController@pinjamBarang');
+
+Route::get('/admin/pinjaman','PinjamBarangController@index');
+Route::get('/admin/pinjaman/cari','PinjamBarangController@search');
 
 
 

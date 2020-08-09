@@ -41,7 +41,9 @@
                     </ul>
 				@if (Auth::check())
 					<ul class="nav navbar-nav navbar-left">
-                    <li><a href="">Home</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/user/barang">Barang</a></li>
+                    <li><a href="/pinjaman">Pinjaman Ku</a></li>
                     </ul>
 				@endif	
                 @if (Auth::guard("admin")->check())
@@ -49,9 +51,8 @@
 
                     <ul class="nav navbar-nav navbar-left">
                     <!--<li><a href="{{ url('/supplier') }}">Tambah Admin</a></li>-->
-                    @if (Auth::guard("admin")->user()->role==1)
                     <li><a href="{{ url('/users') }}">User</a></li>
-                    @endif
+                    <li><a href="{{ url('/admin/pinjaman') }}">Pinjaman</a></li>
                     <li><a href="{{ url('/kategori') }}">Kategori</a></li>
                     <li><a href="{{ url('/barang') }}">Barang</a></li>
                     <li><a href="{{ url('/lokasi/index.php') }}">Lokasi Barang</a></li>
@@ -137,7 +138,18 @@
                 </div>
             </div>
         </nav>
-		
+				@if ($message = Session::get('info'))
+				  <div class="alert alert-success alert-block">
+					<button type="button" class="close" data-dismiss="alert">×</button> 
+					  <strong>{{ $message }}</strong>
+				  </div>
+				@endif
+				@if ($message = Session::get('error'))
+				  <div class="alert alert-danger alert-block">
+					<button type="button" class="close" data-dismiss="alert">×</button> 
+					  <strong>{{ $message }}</strong>
+				  </div>
+				@endif
         @yield('content')
 
 

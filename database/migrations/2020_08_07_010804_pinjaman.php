@@ -17,7 +17,9 @@ class Pinjaman extends Migration
             $table->integer('id', true);
 			$table->integer('id_user');
 			$table->integer('id_admin')->nullable();
-			$table->string('id_barang');
+			$table->enum('pinjam',["ya","tidak"]);
+			$table->date('tgl_pinjam');
+			$table->date('tgl_kembali');
 			$table->timestamps();
         });
     }
