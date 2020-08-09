@@ -15,7 +15,7 @@
                 	<th>Jumlah Barang</th>
                     <th>Barang Masuk</th>
                     <th>Lokasi Barang</th>
-                    <th>#</th>
+                    <th>Aksi</th>
                 </thead>
                 	<tbody>
 					<form action = "{{route('proc_pinjam')}}" method="POST">

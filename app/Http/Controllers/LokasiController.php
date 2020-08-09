@@ -29,7 +29,7 @@ class LokasiController extends Controller
     {
         //
         $page = $this->page;
-        return view($this->page.'/create',compact('page'));
+        return view($this->page.'../create');
     }
 
     public function store(Request $request)

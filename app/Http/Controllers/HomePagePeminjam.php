@@ -68,7 +68,7 @@ class HomePagePeminjam extends Controller
 			if($n == 0) $msg = "Tidak ada Barang yang ditambahkan.";
 			return redirect('/user/detail_pinjam/'.$ida)->with(["info"=>$msg]);
 		}else{
-			return redirect(url()->previous())->with(["error"=>"Tdak dapat meminjam, Akun anda belum aktif"]);
+			return redirect(url()->previous())->with(["error"=>"Tidak dapat meminjam barang, Akun anda belum aktif"]);
 		}
     }
 	
