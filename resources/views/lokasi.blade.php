@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Lokasi Barang Teknik komputer Jaringan
-                    <a class="btn btn-primary col-md-offset-5" href="../create">Tambah Lokasi</a>
+                    <a class="btn btn-primary col-md-offset-5" href="../tambah">Tambah Lokasi</a>
                 </div>
 
 
@@ -16,7 +16,7 @@
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
-                    @endif
+                    @endif      
 
 					<ul>
 						@foreach($lokasi as $p)

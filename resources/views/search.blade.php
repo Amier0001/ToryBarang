@@ -5,12 +5,12 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Kategori</div>
+                <div class="panel-heading">Lokasi</div>
 
                 <div class="panel-body">    
 
 
-                <a class="btn btn-primary" href="{{$page}}/create">Tambah Data</a>
+                <a class="btn btn-primary" href="../tambah">Tambah Data</a>
 
                 <div class="pull-right">
                     <form action="{{url($page.'/cari')}}" method="get">
@@ -34,7 +34,7 @@
                     @foreach ($data as $d)
                         <tr>
                             <td>{{$no++}}</td>
-                            <td>{{$d->kategori}}</td>
+                            <td>{{$d->lokasi}}</td>
                             <td>
                             <a href="{{$page.'/'.$d->id.'/edit'}}" class="btn btn-success">Edit</a>
                                 <button data-toggle="modal" data-target="#confirmModal" data-action="{{url($page.'/'.$d->id)}}" class="btn btn-danger delete-btn">Hapus</button>
