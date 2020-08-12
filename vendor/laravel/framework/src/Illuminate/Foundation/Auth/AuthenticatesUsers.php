@@ -5,7 +5,7 @@ namespace Illuminate\Foundation\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
-use App\AdminOP as Administrator;
+use App\User;
 
 trait AuthenticatesUsers
 {
@@ -185,7 +185,7 @@ trait AuthenticatesUsers
     }
 	
 	function api_login(Request $request){
-		if(Administrator::where('email', $request->email)->get()->count() < 1)
+		if(User::where('email', $request->email)->get()->count() < 1)
 			return response()->json(['message' => 'Email tidak ditemukan'],404);
 		if($token =  $this->api_guard()->attempt(
             $this->credentials($request)
