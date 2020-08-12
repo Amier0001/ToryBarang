@@ -60,7 +60,6 @@ public function __construct()
         $obj->name = $request->name;
         $obj->email = $request->email;
         $obj->password = bcrypt($request->password);
-        $obj->role = $request->role;
         $save = $obj->save();
         if ($save) {
             # code...
@@ -110,7 +109,6 @@ public function __construct()
         $obj->email = $request->email;
 		if(!empty(trim($request->password)))
 			$obj->password = bcrypt($request->password);
-        $obj->role = $request->role;
         $obj->save();
 
 

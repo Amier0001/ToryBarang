@@ -42,7 +42,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Login
                                 </button>
-                                <a href="" class="col-md-offset-1"> Lupa password?</a>
+                                
                             </div>
                         </div>
                     </form>

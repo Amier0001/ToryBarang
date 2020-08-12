@@ -35,15 +35,21 @@
 							@if($d->tgl_kembali != "0000-00-00")
 								<label class="label label-success">Selesai</label>
 							@else
-								{{$d->pinjam == "ya" ? '<label class="label label-warning">Dikirimkan</label>':'<label class="label label-default">Draft</label>'}}
+								@if($d->pinjam == "ya")
+									@if($d->id_admin == "")	
+										<label class="label label-warning">Dikirimkan</label>
+									@else
+										<label class="label label-primary">Dipinjam</label>
+									@endif
+								@endif
 							@endif
 							</td>
                             <td>
 							<a href="{{'/admin/'.$page.'/'.$d->id.'/detail'}}" class="btn btn-info">Detail</a>
                 			@if($d->id_admin == null)
-                            <a href="{{$page.'/'.$d->id.'/verify'}}" class="btn btn-info">Verifikasi</a>
+                            <a href="{{$page.'/'.$d->id.'/verify'}}" class="btn btn-warning">Verifikasi</a>
                             @elseif($d->tgl_kembali == "0000-00-00")
-							<a href="{{$page.'/'.$d->id.'/kembali'}}" class="btn btn-primary">Kembalikan</a>
+							<a href="{{$page.'/'.$d->id.'/kembali'}}" class="btn btn-success">Kembalikan</a>
                             @endif
 							</td>
                 		</tr>

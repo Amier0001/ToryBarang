@@ -30,7 +30,17 @@
 
                         <div class="form-group">
                             <label>Lokasi Barang</label>
+<<<<<<< HEAD
                             <input type="text" name="lokasi" class="form-control">
+=======
+                            <select class="form-control" name="lokasi">
+                                <option value="">Silahkan Pilih</option>
+                                @foreach ($locations as $l)
+                                    {{-- expr --}}
+                                    <option value="{{$l->id}}">{{$l->nama}}</option>
+                                @endforeach
+                            </select>
+>>>>>>> f653da42b76fa5309bce1b73c07beeff8a9c5455
                         </div>
 
 

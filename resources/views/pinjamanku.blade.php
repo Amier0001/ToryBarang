@@ -31,19 +31,28 @@
                             <td>{{$d->tgl_kembali}}</td>
                             <td>
 							@if($d->tgl_kembali != "0000-00-00")
-								Selesai
+								<label class="label label-success">Selesai</label>
 							@else
-								{{$d->pinjam == "ya" ? "Dikirimkan":"Draft"}}
+								@if($d->pinjam == "ya")
+									@if($d->id_admin == "")	
+										<label class="label label-warning">Dikirimkan</label>
+									@else
+										<label class="label label-primary">Dipinjam</label>
+									@endif
+								@else
+									<label class="label label-default">Draft</label>
+								@endif
 							@endif
 							</td>
                             <td>
-							@if($d->tgl_kembali != "0000-00-00")
-								
-							@else
-                            <a href="{{$page.'/'.$d->id.'/edit'}}" class="btn btn-success">Edit</a>
-                            <button data-toggle="modal" data-target="#confirmModal" data-action="{{url($page.'/'.$d->kode)}}" class="btn btn-danger delete-btn">Hapus</button>
-                			@endif
+							<form action = "{{route('send_pinjam')}}" method="POST">
+							{{csrf_field()}}
 							<a href="{{$page.'/'.$d->id}}" class="btn btn-info">Detail</a>
+							<input type="hidden" name="id_pinjaman" value="{{$d->id}}">
+							@if($d->tgl_kembali == "0000-00-00")@if($d->pinjam != "ya")<input class="btn btn-primary" type="submit" name="submit" value="Pinjam">
+							@endif @endif
+							</form>
+							
                 			</td>
                 		</tr>
                 	@endforeach
